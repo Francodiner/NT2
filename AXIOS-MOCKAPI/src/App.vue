@@ -5,10 +5,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-             <router-link to="/add" class="nav-link">Agregar usuario</router-link>
-          </li>
-          <li class="nav-item">
-             <router-link to="/edit" class="nav-link">Editar usuario</router-link>
+             <router-link to="/add" class="nav-link">Agregar producto</router-link>
           </li>
         </ul>
       </div>
