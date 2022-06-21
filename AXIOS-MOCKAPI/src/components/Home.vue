@@ -1,64 +1,66 @@
 <template>
-  <table class="table bordered striped">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Sku</th>
-        <th>Precio</th>
-        <th>Stock</th>
-        <th>Estado</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="(value, index) in data" :key="index">
-        <td>{{ value.nombre }}</td>
-        <td>{{ value.sku }}</td>
-        <td>{{ value.precio }}</td>
-        <td>{{ value.stock }}</td>
-        <td v-if="value.estado == 1">Activo</td>
-        <td v-else>Inactivo</td>
-        <td>
-          <router-link class="btn btn-primary" :to="'/edit/' + value.id"
-            >Editar</router-link
-          >
-          <button class="btn btn-danger" v-on:click="deleteData(value.id)">
-            Eliminar
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <main role="main" class="mt-5">
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Gestion de Stock</h1>
+          <p class="lead text-muted">Aplicación para la gestión de stock de un supermercado. Permite Alta, Baja y Modificación de productos.</p>
+        </div>
+      </section>
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                  <h2 class="card-text text-center">Listado de productos</h2>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="col text-center">
+                      <router-link class="btn btn-sm btn-success mt-3" :to="'/list'" >Ver mas...</router-link>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                  <h2 class="card-text text-center">Edicion de producto</h2>
+                  <input type="text" name="id_product" id="id_product" class="form-control" v-model="data" placeholder="Ingrese el ID del producto">
+                  <div class="d-flex justify-content-between align-items-center mt-3">
+                    <div class="col text-center">
+                      <router-link class="btn btn-sm btn-warning" :to="'/edit/' + data" >Editar</router-link> 
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                  <h2 class="card-text text-center">Eliminacion de producto</h2>
+                  <input type="text" name="" id="" class="form-control" placeholder="Ingrese el ID del producto">
+                  <div class="d-flex justify-content-between align-items-center mt-3">
+                    <div class="col text-center">
+                      <button class="btn btn-sm btn-danger">Eliminar...</button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
 </template>
 
 <script>
-import { api } from "../api";
 export default {
   name: "HomeA",
   data() {
     return {
-      data: null,
+      data: null
     };
-  },
-  mounted() {
-    this.axios.get(api).then((res) => {
-      if (res.data) {
-        this.data = res.data;
-      }
-    });
-  },
-  methods: {
-    deleteData(id) {
-      if (id) {
-        if (confirm(`¿Esta seguro que desea eliminar el producto ?`) == true) {
-          this.axios.delete(`${api}/${id}`).then((res) => {
-            if (res.data) {
-              let newArr = this.data.filter((el) => el.id !== id);
-              this.data = newArr;
-            }
-          });
-        }
-      }
-    },
-  },
+  }
 };
 </script>

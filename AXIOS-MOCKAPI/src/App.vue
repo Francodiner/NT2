@@ -1,11 +1,14 @@
 <template>
   <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <router-link to="/" class="navbar-brand">Axios - MockApi</router-link>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="border-radius: 5px">
+      <router-link to="/" class="navbar-brand" style="margin-left: 10px;">TP Final - Grupo 5</router-link>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-             <router-link to="/add" class="nav-link">Agregar producto</router-link>
+             <router-link to="/list" class="nav-link">Listado</router-link>
+          </li>
+          <li class="nav-item">
+             <router-link to="/add" class="nav-link">Agregar</router-link>
           </li>
         </ul>
       </div>

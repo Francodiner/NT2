@@ -7,6 +7,8 @@ import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
 import axios from 'axios'
 import Vueaxios from 'vue-axios'
+import store from './store'
+import './globalMixins'
 
 Vue.use(VueRouter)
 Vue.use(Vuelidate)
@@ -19,5 +21,6 @@ const router = new VueRouter({
 new Vue({
     el: '#app',
     render: h => h(App),
-    router: router
-}) 
+    router: router,
+    store : store
+})
